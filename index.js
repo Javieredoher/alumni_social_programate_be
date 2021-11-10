@@ -24,6 +24,7 @@ app.use(errorHandler);
 
 app.use('/api/users', usersApi)
 app.use('/api/profiles', profilesApi)
+require('./src/relations/aggregate')
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
