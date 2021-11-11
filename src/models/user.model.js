@@ -79,6 +79,10 @@ const userSchema = new Schema({
     },
 })
 
+userSchema.methods.setImgUrl = function setImgUrl (filename){
+    const {appHost, appPort } = config
+    this.img = `${appHost}:${appPort}/public/${filename}`
+}
 
 const User = model('users', userSchema)
 

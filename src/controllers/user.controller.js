@@ -20,6 +20,11 @@ router.route('/').post((req, res) => {
     const data = req.body;
     const newUser = new User(data)
 
+    if(req.file){
+        const { filename } = req.file
+        newUser.setImgUrl(filename)
+    }
+
     newUser.save()
         .then(user => res.json(user))
         .catch(err => res.status(400).json("Error! " + err))
