@@ -2,8 +2,9 @@ const { Schema, model } = require('mongoose')
 
 const profileSchema = new Schema({
 
-  user_id: {
-    type: String
+  user_info: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   experience: {
     type: Array,

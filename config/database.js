@@ -22,6 +22,7 @@ const connection = mongoose.connection
 connection.once('open', () => {
   console.log("DB connected.");
 })
+
 process.on('uncaughtException', error => {
   console.error(error)
   mongoose.disconnect()

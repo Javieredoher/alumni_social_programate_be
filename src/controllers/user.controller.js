@@ -17,7 +17,8 @@ router.route('/:userId').get((req, res) => {
         .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/').post((req, res) => {
-    const newUser = new User(req.body)
+    const data = req.body;
+    const newUser = new User(data)
 
     newUser.save()
         .then(user => res.json(user))

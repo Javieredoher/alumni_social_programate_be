@@ -6,14 +6,14 @@ const router = require('express').Router();
 
 router.route('/').get((req, res) => {
   // using .find() without a paramter will match on all profile instances
-  Profile.find()
+  Profile.find().populate('user_info')
     .then(allProfiles => res.json(allProfiles))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/:profileId').get((req, res) => {
   // using .find() without a paramter will match on all profile instances
 
-  Profile.findById(req.params.profileId)
+  Profile.findById(req.params.profileId).populate('user_info')
     .then(profiles => res.json(profiles))
     .catch(err => res.status(400).json('Error! ' + err))
 })
