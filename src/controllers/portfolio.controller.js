@@ -1,35 +1,35 @@
 // profile controller
-const Post = require('../models/portfolio.model');
+const Portfolio = require('../models/portfolio.model');
 const router = require('express').Router();
 
 
 
 router.route('/').get((req, res) => {
-  Post.find()
-    .then(allPosts => res.json(allPosts))
+  Portfolio.find()
+    .then(allPortfolio => res.json(allPortfolio))
     .catch(err => res.status(400).json('Error! ' + err))
 })
-router.route('/:postId').get((req, res) => {
-  Post.findById(req.params.postId)
-    .then(post => res.json(post))
+router.route('/:portfolioId').get((req, res) => {
+  Portfolio.findById(req.params.portfolioId)
+    .then(portfolio => res.json(portfolio))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/').post((req, res) => {
-  const newPost = new Post(req.body)
+  const newPost = new Portfolio(req.body)
 
   newPost.save()
-    .then(post => res.json(post))
+    .then(portfolio => res.json(portfolio))
     .catch(err => res.status(400).json("Error! " + err))
 })
-router.route('/:postId').delete((req, res) => {
-  Post.deleteOne({ _id: req.params.postId })
-    .then(post => res.json('Success! User deleted.'))
+router.route('/:portfolioId').delete((req, res) => {
+  Portfolio.deleteOne({ _id: req.params.portfolioId })
+    .then(portfolio => res.json('Success! Portfolio deleted.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
-router.route('/:postId').put((req, res) => {
-  Post.findByIdAndUpdate(req.params.postId, req.body)
-    .then(profile => res.json('Success! profile updated.'))
+router.route('/:portfolioId').put((req, res) => {
+  Portfolio.findByIdAndUpdate(req.params.portfolioId, req.body)
+    .then(portfolio => res.json('Success! Portfolio updated.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 

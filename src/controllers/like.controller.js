@@ -23,13 +23,13 @@ router.route('/').post((req, res) => {
 })
 router.route('/:likeId').delete((req, res) => {
   Post.deleteOne({ _id: req.params.likeId })
-    .then(like => res.json('Success! User deleted.'))
+    .then(like => res.json('Success! like deleted.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
 router.route('/:likeId').put((req, res) => {
   Post.findByIdAndUpdate(req.params.likeId, req.body)
-    .then(like => res.json('Success! profile updated.'))
+    .then(like => res.json('Success! like updated.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 

@@ -21,13 +21,13 @@ router.route('/').post((req, res) => {
 })
 router.route('/:commentId').delete((req, res) => {
   Comment.deleteOne({ _id: req.params.commentId })
-    .then(comment => res.json('Success! User deleted.'))
+    .then(comment => res.json('Success! comment deleted.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
 router.route('/:commentId').put((req, res) => {
   Comment.findByIdAndUpdate(req.params.commentId, req.body)
-    .then(comment => res.json('Success! profile updated.'))
+    .then(comment => res.json('Success! comment updated.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 

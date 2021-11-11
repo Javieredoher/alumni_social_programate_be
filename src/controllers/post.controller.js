@@ -23,13 +23,13 @@ router.route('/').post((req, res) => {
 })
 router.route('/:postId').delete((req, res) => {
   Post.deleteOne({ _id: req.params.postId })
-    .then(post => res.json('Success! User deleted.'))
+    .then(post => res.json('Success! post deleted.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
 router.route('/:postId').put((req, res) => {
   Post.findByIdAndUpdate(req.params.postId, req.body)
-    .then(profile => res.json('Success! profile updated.'))
+    .then(profile => res.json('Success! post updated.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
