@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const likeSchema = new Schema({
-    like_id: {
-        type: Number,
-        required: true,
-    },
     like_count: {
         type: Number,
         required: true,
@@ -12,14 +8,14 @@ const likeSchema = new Schema({
     post_id: {
         type: Number,
         required: true,
-       
+
     },
     user_id: {
         type: Number,
         required: true,
-        
+
     }
-},{ timestamps: true })
+}, { timestamps: true })
 
 
 const Like = model('likes', likeSchema)

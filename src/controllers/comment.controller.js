@@ -1,35 +1,33 @@
 // profile controller
-const Foro = require('../models/post.model');
+const Comment = require('../models/comment.model');
 const router = require('express').Router();
 
-
-
 router.route('/').get((req, res) => {
-  Like.find()
+  Comment.find()
     .then(allcomments => res.json(allcomments))
     .catch(err => res.status(400).json('Error! ' + err))
 })
-router.route('/:foroId').get((req, res) => {
-  Post.findById(req.params.foroId)
+router.route('/:commentId').get((req, res) => {
+  Comment.findById(req.params.commentId)
     .then(comment => res.json(comment))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/').post((req, res) => {
-  const newComment = new Post(req.body)
+  const newComment = new Comment(req.body)
 
   newComment.save()
     .then(comment => res.json(comment))
     .catch(err => res.status(400).json("Error! " + err))
 })
-router.route('/:foroId').delete((req, res) => {
-  Post.deleteOne({ _id: req.params.foroId })
+router.route('/:commentId').delete((req, res) => {
+  Comment.deleteOne({ _id: req.params.commentId })
     .then(comment => res.json('Success! User deleted.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
-router.route('/:foroId').put((req, res) => {
-  Post.findByIdAndUpdate(req.params.foroId, req.body)
-    .then(like => res.json('Success! profile updated.'))
+router.route('/:commentId').put((req, res) => {
+  Comment.findByIdAndUpdate(req.params.commentId, req.body)
+    .then(comment => res.json('Success! profile updated.'))
     .catch(err => res.status(400).json('Error! ' + err))
 })
 
