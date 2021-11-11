@@ -10,6 +10,16 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'likes'
   },
+  title: {
+    type: String
+  },
+  type: {
+    type: String
+  },
+  softSkills: {
+    type: Array,
+  }
+  ,
   comments_info: {
     type: Schema.Types.ObjectId,
     ref: 'comments'
@@ -17,9 +27,28 @@ const postSchema = new Schema({
   description: {
     type: String
   },
+  profile: {
+    type: String
+  },
 
   images: {
-    type: Array,
+    type: String,
+  },
+  company: {
+    type: String
+  },
+  salary: {
+    type: Strin
+  },
+  modality: {
+    type: String
+  },
+  contact: {
+    type: String
+  },
+  input_foro: {
+    type: String,
+    trim: tue
   },
   link: {
     type: String,
@@ -27,6 +56,16 @@ const postSchema = new Schema({
   tags: {
     type: Array,
   },
+  dateEvent: {
+    type: Date
+  },
+  technologies: {
+    type: Array
+  },
+  place: {
+    type: String
+  },
+
 
 }, { timestamps: true })
 
