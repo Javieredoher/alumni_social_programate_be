@@ -1,12 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const portfolioSchema = new Schema({
-    proyectLink: {
-        type: Array,
-        trim: true
+    
+    proyect_link: {
+            type: String,
+            trim: true,        
     },
     deploy: {
-        type: Array,
+        type: String,
         trim: true
     },
     profile_id: {
@@ -18,6 +19,6 @@ const portfolioSchema = new Schema({
 })
 
 
-const Portfolio = model('portfolio', portfolioSchema);
+const Portfolio = model('portfolio', portfolioSchema)
 
-module.exports = Portfolio;
+module.exports = Portfolio

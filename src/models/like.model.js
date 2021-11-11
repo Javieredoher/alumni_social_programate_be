@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const likeSchema = new Schema({
+
     like_count: {
         type: Number,
         required: true,
