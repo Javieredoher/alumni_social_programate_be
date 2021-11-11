@@ -14,7 +14,11 @@ const commentAlumniSchema = new Schema ({
 
     comment_date:{
         timestamps:true
-    } 
+    },
+    post_id:{
+        type: String,
+        require: true 
+    }
 
 },{ timestamps: true })
   

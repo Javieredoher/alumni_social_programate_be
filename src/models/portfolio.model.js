@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
-const briefcaseSchema = new Schema({
-    proyectLink: {
+const portfolioSchema = new Schema({
+    
+    proyect_link: {
             type: String,
-            trim: true
-        
+            trim: true,        
     },
     deploy: {
         type: String,
@@ -13,12 +13,12 @@ const briefcaseSchema = new Schema({
     profile_id: {
         type: String
     },
-    description: {
+    description_proyect: {
         type: String
     }
 })
 
 
-const Briefcase = model('briefcase', briefcaseSchema)
+const Portfolio = model('portfolio', portfolioSchema)
 
-module.exports = Briefcase
+module.exports = Portfolio
