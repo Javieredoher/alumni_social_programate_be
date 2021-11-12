@@ -12,7 +12,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/:postId').get((req, res) => {
-  Post.findById(req.params.postId).populate("comments").populate("likes").post("user_info")
+  Post.findById(req.params.postId).populate("comments").populate("likes").populate("user_info")
     .then(post => res.json(post))
     .catch(err => res.status(400).json('Error! ' + err))
 })
@@ -36,19 +36,20 @@ router.route('/comment/:postId').post((req, res) => {
         .catch(err => res.status(400).json('Error! ' + err))
     })
 })
-//Creating likes into Post
 router.route('/like/:postId').post((req, res) => {
   //in this part we are going to create a new endpoint to added the comment into the post
 
   Like.create(req.body)
     .then((like) => {
-      //if a like was created succesfully, let's go to find one (findOne)post with an _id equal to req.params.postId. Update is for our post in order to be associdated with a new like 
+      //if a comment was created succesfully, let's go to find one (findOne)post with an _id equal to req.params.postId. Update is for our post in order to be associdated with a new comment 
       //{new:true} tells the query that we want it to return the updated post
       return Post.findOneAndUpdate({ _id: req.params.postId }, { $push: { likes: like._id } }, { new: true })
         .then(post => res.json(post))
         .catch(err => res.status(400).json('Error! ' + err))
     })
 })
+
+
 router.route('/:postId').delete((req, res) => {
   Post.deleteOne({ _id: req.params.postId })
     .then(post => res.json('Success! post deleted.'))
