@@ -1,5 +1,6 @@
 // profile controller
 const Post = require('../models/post.model');
+const Comment = require('../models/comment.model');
 const router = require('express').Router();
 
 
@@ -10,7 +11,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/:postId').get((req, res) => {
-  Post.findById(req.params.postId)
+  Post.findById(req.params.postId).populate("comments")
     .then(post => res.json(post))
     .catch(err => res.status(400).json('Error! ' + err))
 })
@@ -20,6 +21,19 @@ router.route('/').post((req, res) => {
   newPost.save()
     .then(post => res.json(post))
     .catch(err => res.status(400).json("Error! " + err))
+})
+//Creating comments into Post
+router.route('/:postId').post((req, res) => {
+  //in this part we are going to create a new endpoint to added the comment into the post
+
+  Comment.create(req.body)
+    .then((comment) => {
+      //if a comment was created succesfully, let's go to find one (findOne)post with an _id equal to req.params.postId. Update is for our post in order to be associdated with a new comment 
+      //{new:true} tells the query that we want it to return the updated post
+      return Post.findOneAndUpdate({ _id: req.params.postId }, { $push: { comments: comment._id } }, { new: true })
+        .then(post => res.json(post))
+        .catch(err => res.status(400).json('Error! ' + err))
+    })
 })
 router.route('/:postId').delete((req, res) => {
   Post.deleteOne({ _id: req.params.postId })

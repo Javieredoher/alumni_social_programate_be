@@ -8,7 +8,6 @@ const userSchema = new Schema({
     },
     middleName: {
         type: String,
-        required: true,
         maxlength: 45
     },
     lastName: {
@@ -18,7 +17,6 @@ const userSchema = new Schema({
     },
     secondSurname: {
         type: String,
-        required: true,
         maxlength: 45
     },
     email: {
