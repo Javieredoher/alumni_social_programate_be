@@ -7,17 +7,13 @@ const commentAlumniSchema = new Schema({
     require: true
   },
 
-  text: {
+  comment: {
     type: String,
     require: true
-  },
-
-  comment_date: {
-    timestamps: true
   }
 
 }, { timestamps: true })
 
-const Comment = model('coments', commentAlumniSchema)
+const Comment = model('comments', commentAlumniSchema)
 
 module.exports = Comment

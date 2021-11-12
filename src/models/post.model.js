@@ -6,10 +6,10 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  like_info: {
+  like_info: [{
     type: Schema.Types.ObjectId,
     ref: 'likes'
-  },
+  }],
   title: {
     type: String
   },
@@ -20,10 +20,10 @@ const postSchema = new Schema({
     type: Array,
   }
   ,
-  comments_info: {
+  comments: [{
     type: Schema.Types.ObjectId,
     ref: 'comments'
-  },
+  }],
   description: {
     type: String
   },
@@ -38,7 +38,7 @@ const postSchema = new Schema({
     type: String
   },
   salary: {
-    type: Strin
+    type: String
   },
   modality: {
     type: String
@@ -47,8 +47,7 @@ const postSchema = new Schema({
     type: String
   },
   input_foro: {
-    type: String,
-    trim: tue
+    type: String
   },
   link: {
     type: String,
