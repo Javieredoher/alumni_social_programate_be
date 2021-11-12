@@ -3,8 +3,8 @@ const { Schema, model } = require('mongoose')
 const commentAlumniSchema = new Schema({
 
   user_id: {
-    type: String,
-    require: true
+    type: Schema.Types.ObjectId,
+    ref: "users"
   },
 
   comment: {

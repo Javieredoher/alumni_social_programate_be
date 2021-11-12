@@ -2,19 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const likeSchema = new Schema({
 
-    like_count: {
+    like: {
         type: Number,
         required: true,
-    },
-    post_id: {
-        type: Number,
-        required: true,
-
     },
     user_id: {
-        type: Number,
-        required: true,
-
+        type: Schema.Types.ObjectId,
+        ref: "users"
     }
 }, { timestamps: true })
 
