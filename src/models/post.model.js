@@ -11,10 +11,13 @@ const postSchema = new Schema({
     ref: 'likes'
   }],
   title: {
-    type: String
+    type: String,
+    trim: true
   },
   type: {
-    type: String
+    type: String,
+    trim: true,
+    lowercase: true
   },
   softSkills: {
     type: Array,

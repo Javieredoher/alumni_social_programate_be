@@ -7,7 +7,8 @@ const router = require('express').Router();
 
 
 router.route('/').get((req, res) => {
-  Post.find()
+  const query = req.query ? req.query : []
+  Post.find(query)
     .then(allPosts => res.json(allPosts))
     .catch(err => res.status(400).json('Error! ' + err))
 })
