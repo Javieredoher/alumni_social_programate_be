@@ -8,7 +8,6 @@ const userSchema = new Schema({
     },
     middleName: {
         type: String,
-        required: true,
         maxlength: 45
     },
     lastName: {
@@ -18,7 +17,6 @@ const userSchema = new Schema({
     },
     secondSurname: {
         type: String,
-        required: true,
         maxlength: 45
     },
     email: {
@@ -32,23 +30,13 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
-    img: {
+    avatar: {
         type: String,
-        trim: true,
+        default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png",
     },
     rol: {
-        candidate: {
-            type: Boolean,
-            default: true,
-        },
-        student: {
-            type: Boolean,
-            default: false,
-        },
-        developer: {
-            type: Boolean,
-            default: false,
-        },
+        type: Number,
+        default: 0
     },
 
     program: {
@@ -74,10 +62,10 @@ const userSchema = new Schema({
 
     passwordHash: {
         type: String,
-        require: true,
-        min: 8,
+        require: true
+
     },
-})
+}, { timestamps: true })
 
 
 const User = model('users', userSchema)
