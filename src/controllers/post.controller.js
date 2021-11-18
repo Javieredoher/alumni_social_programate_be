@@ -17,7 +17,9 @@ router.route('/:postId').get((req, res) => {
     .then(post => res.json(post))
     .catch(err => res.status(400).json('Error! ' + err))
 })
+
 router.route('/').post((req, res) => {
+  console.log(req.body)
   const newPost = new Post(req.body)
 
   newPost.save()

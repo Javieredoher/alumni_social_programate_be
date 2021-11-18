@@ -59,7 +59,7 @@ const postSchema = new Schema({
     type: Array,
   },
   dateEvent: {
-    type: Date
+    type: String
   },
   technologies: {
     type: Array
