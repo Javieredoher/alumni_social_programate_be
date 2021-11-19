@@ -1,21 +1,34 @@
 const { Schema, model } = require('mongoose');
 
 const portfolioSchema = new Schema({
-    
-    proyect_link: {
-            type: String,
-            trim: true,        
+
+    profile_id: {
+        type: String
     },
+    
+    title: {
+        type: String,
+        trim: true
+      },
+
+    description_proyect: {
+        type: String
+    },
+
     deploy: {
         type: String,
         trim: true
     },
-    profile_id: {
-        type: String
+
+    proyect_link: {
+        type: String,
+        trim: true,        
     },
-    description_proyect: {
-        type: String
-    }
+
+    technologies: {
+        type: Array
+      },
+      
 })
 
 
