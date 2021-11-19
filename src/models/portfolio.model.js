@@ -10,6 +10,10 @@ const portfolioSchema = new Schema({
         type: String,
         trim: true
       },
+    
+    image: {
+        type: String,
+    },    
 
     description_proyect: {
         type: String
