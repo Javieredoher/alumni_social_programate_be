@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const { logError, errorHandler, wrapError } = require('./utils/middleware/errorHandlers');
 const userRoutes = require('./src/controllers/user.controller')
 const { profilesApi, usersApi, postsApi, commentApi, likeApi, portfolioApi } = require('./src/controllers');
-
+const userLogin = require("./src/routes/user.route")
 // Conection MongoDB
 require('./config/database')
 
@@ -28,6 +28,7 @@ app.use('/api/posts', postsApi)
 app.use('/api/comments', commentApi)
 app.use('/api/likes', likeApi)
 app.use('/api/portfolios', portfolioApi)
+app.use('/api/auth', userLogin)
 
 
 const PORT = process.env.PORT || 5000
