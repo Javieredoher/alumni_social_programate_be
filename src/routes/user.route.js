@@ -19,6 +19,8 @@ router.get('/info', auth, controllerUser.getUserInfor)
 
 router.get('/all_info', auth, authAdmin, controllerUser.getUsersAllInfor)
 
+router.get('/logout', controllerUser.logout)
+
 // router.patch('/update', auth, controllerUser.updateUser)
 
 //  router.patch('/update_role/:id', auth, authAdmin, controllerUser.updateUsersRole)

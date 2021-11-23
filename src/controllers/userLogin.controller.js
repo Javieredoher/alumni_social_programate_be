@@ -198,6 +198,15 @@ const controllerUser = {
     } catch (err) {
       return res.status(500).json({ msg: err.message })
     }
+  },
+  logout: async (req, res) => {
+    try {
+      res.clearCookie('refreshtoken', { path: 'api/refresh_token' })
+      return res.json({ msg: "Logget out" })
+    } catch (error) {
+      return res.status(500).json({ msg: error.message })
+
+    }
   }
   // ,
   // deleteUser: async (req, res) => {
