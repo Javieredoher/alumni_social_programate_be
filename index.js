@@ -1,16 +1,23 @@
-require("dotenv").config();
 const express = require("express"); // establish an express app
 const app = express(); // establish an express app
 const cors = require("cors"); // allow requests from outside resources like postman, or your frontend if you choose to build that out
 const morgan = require("morgan");
-const path = require("path"); //
+const path = require("path");
+
 const {
     logError,
     errorHandler,
     wrapError,
 } = require("./utils/middleware/errorHandlers");
 const userRoutes = require("./src/controllers/user.controller");
-const { profilesApi, usersApi, postsApi } = require("./src/controllers");
+const {
+    profilesApi,
+    usersApi,
+    postsApi,
+    commentApi,
+    likeApi,
+    portfolioApi,
+} = require("./src/controllers");
 
 // Conection MongoDB
 require("./config/database");
@@ -30,6 +37,9 @@ app.use(errorHandler);
 app.use("/api/users", usersApi);
 app.use("/api/profiles", profilesApi);
 app.use("/api/posts", postsApi);
+app.use("/api/comments", commentApi);
+app.use("/api/likes", likeApi);
+app.use("/api/portfolios", portfolioApi);
 app.use(require("./src/routes/index")); //
 
 //static content

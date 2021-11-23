@@ -27,14 +27,12 @@ const profileSchema = new Schema({
   },
   softSkills: {
     type: Array,
-    trim: true,
-    lowercase: true
-
   },
   technicalSkills: {
     type: Array,
-    trim: true,
-    lowercase: true
+  },
+  lenguages: {
+    type: Array
   },
 
 

@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const foroDiscussionSchema = new Schema(
     {
-        id_users: {
+        id_user: {
             type: String,
             require: true,
         },
