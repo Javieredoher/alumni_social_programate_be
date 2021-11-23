@@ -6,7 +6,17 @@ const router = require('express').Router();
 
 router.route('/').get((req, res) => {
   // using .find() without a paramter will match on all profile instances
-  Profile.find().populate('user_info')
+  const query = req.query ? req.query : []
+  console.log(query)
+  Profile.find(query).populate('user_info')
+    .then(allProfiles => res.json(allProfiles))
+    .catch(err => res.status(400).json('Error! ' + err))
+})
+router.route('/user').get((req, res) => {
+  // using .find() without a paramter will match on all profile instances
+  const query = req.query ? req.query : []
+  console.log(query)
+  Profile.find(query)
     .then(allProfiles => res.json(allProfiles))
     .catch(err => res.status(400).json('Error! ' + err))
 })

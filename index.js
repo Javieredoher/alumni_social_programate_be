@@ -28,7 +28,7 @@ app.use('/api/posts', postsApi)
 app.use('/api/comments', commentApi)
 app.use('/api/likes', likeApi)
 app.use('/api/portfolios', portfolioApi)
-app.use('/api/auth', userLogin)
+app.use('/api', userLogin)
 
 
 const PORT = process.env.PORT || 5000
