@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error! ' + err))
 })
 router.route('/:commentId').get((req, res) => {
-  Comment.findById(req.params.commentId)
+  Comment.findById(req.params.commentId).populate('user_id')
     .then(comment => res.json(comment))
     .catch(err => res.status(400).json('Error! ' + err))
 })
